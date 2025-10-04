@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Análisis y Pruebas de Calidad para Sitios Web</title>
+    <style>
+        /* --------- Estilos globales --------- */
+        body {
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            background: #eef2f6;
+            color: #222;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            color: #041d35;
+        }
+
+        /* --------- Encabezado --------- */
+        header {
+            background: linear-gradient(90deg, #002d5a, #0059b3);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 2rem;
+            flex-wrap: wrap;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        header img {
+            height: 60px;
+            width: auto;
+        }
+
+        header h1 {
+            font-size: 1.5rem;
+            margin: 0;
+            flex: 1;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #ffcc00;
+        }
+
+        /* --------- Secciones --------- */
+        section {
+            max-width: 1100px;
+            margin: auto;
+            padding: 3rem 1.5rem;
+        }
+
+        /* --------- Hero Section --------- */
+        .hero {
+            background: linear-gradient(to right, #004080, #0080ff);
+            color: white;
+            text-align: center;
+            padding: 4rem 1rem;
+            border-bottom-left-radius: 60px;
+            border-bottom-right-radius: 60px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero h2 {
+            font-size: 2.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        /* --------- Tarjetas con efecto 3D --------- */
+        .card {
+            background: white;
+            margin: 1.5rem 0;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
+        }
+
+        .card h3 {
+            margin-top: 0;
+        }
+
+        /* Estilo para la nueva subsección de Consejos */
+        .consejos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .consejo-item {
+            background: #f0f7ff; /* Fondo ligeramente azul para destacar */
+            padding: 1rem;
+            border-left: 5px solid #0059b3;
+            border-radius: 8px;
+        }
+
+        .consejo-item h4 {
+            color: #003366;
+            margin-top: 0;
+        }
+
+        /* --------- Lista de pruebas --------- */
+        ol {
+            background: #ffffff;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            counter-reset: item;
+        }
+
+        ol li {
+            padding: 1rem 0;
+            font-weight: 500;
+            color: #003366;
+            border-bottom: 1px dashed #e0e0e0;
+        }
+
+        ol li:last-child {
+            border-bottom: none;
+        }
+
+        .detalle-prueba {
+            display: block;
+            font-weight: normal;
+            color: #555;
+            font-size: 0.95rem;
+            margin-top: 0.3rem;
+        }
+
+        /* --------- Bibliografía --------- */
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul li {
+            background: #ffffff;
+            padding: 1rem;
+            margin-bottom: 0.8rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* --------- Footer --------- */
+        footer {
+            background: linear-gradient(90deg, #003366, #0059b3);
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            border-top-left-radius: 50px;
+            border-top-right-radius: 50px;
+            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        /* --------- Responsividad --------- */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            header h1 {
+                font-size: 1.3rem;
+                margin-top: 0.5rem;
+            }
+
+            nav {
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="LOGO_SENA.jpg" alt="Logo SENA" title="Servicio Nacional de Aprendizaje">
+        <h1>Análisis y Pruebas de Calidad para Sitios Web</h1>
+        <nav>
+            <a href="#investigacion">Contexto Inicial</a>
+            <a href="#pruebas">Proceso QA</a>
+            <a href="#bibliografia">Recursos</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h2>La Clave de la Calidad: Testeo Integral Antes de Publicar 🎯</h2>
+        <p>
+            En el mundo digital, la <strong>experiencia del usuario (UX)</strong> lo es todo. Nuestro compromiso es garantizar
+            que cada aplicación web no solo sea funcional y segura, sino que también ofrezca una <strong>interfaz impecable</strong> en cualquier dispositivo y navegador. Aquí exploramos las metodologías esenciales para
+            la <strong>verificación de la calidad (QA)</strong>, compatibilidad y visualización óptima, asegurando la robustez de
+            tu proyecto antes de su lanzamiento global.
+        </p>
+    </section>
+
+    <section id="investigacion">
+        <h2>Investigación y Fundamentos Técnicos 🧐</h2>
+
+        <p>
+            La fase de investigación sienta las bases de un lanzamiento exitoso. Antes de centrarnos en la interfaz de usuario, debemos asegurar que la infraestructura de soporte, como el dominio y los protocolos de seguridad, estén configurados correctamente. Un error en este punto puede detener todo el proyecto.
+        </p>
+
+        <div class="card">
+            <h3>¿Cómo verificar si un dominio está bien configurado? 🌐</h3>
+            <p>
+                La configuración del dominio es el primer paso crítico. Se utilizan herramientas de <strong>resolución de nombres de dominio (DNS Checker)</strong> y <strong>búsqueda Whois</strong> para confirmar que el nombre de dominio apunte a la dirección IP correcta del servidor. Además, es vital validar el <strong>certificado SSL/TLS (SSL Labs)</strong> para garantizar una conexión segura (HTTPS), esencial para la confianza del usuario y el posicionamiento SEO.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>¿Una aplicación web se ve igual en todos los navegadores? 💻</h3>
+            <p>
+                La respuesta corta es no, debido a la variación en los motores de renderizado. Cada navegador (Chrome, Firefox, Safari, Edge) interpreta el código HTML, CSS y JavaScript de forma ligeramente diferente. Por ello, las <strong>pruebas de compatibilidad cross-browser</strong> son obligatorias. Plataformas en la nube como <strong>BrowserStack</strong> o <strong>CrossBrowserTesting</strong> permiten simular estos entornos sin necesidad de múltiples máquinas físicas.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>¿Cómo se ve una aplicación web en un explorador del celular? 📱</h3>
+            <p>
+                Dado que más del 60% del tráfico web proviene de dispositivos móviles, la <strong>visualización móvil (responsive design)</strong> es fundamental. Se recomienda empezar por el <strong>modo responsive de las DevTools de Chrome/Firefox</strong> para simular rápidamente múltiples tamaños. Sin embargo, la prueba final debe realizarse en <strong>dispositivos físicos reales</strong> para detectar problemas específicos de toque, teclado y rendimiento del sistema operativo.
+            </p>
+        </div>
+    </section>
+
+    <section>
+        <h2>Consejos Adicionales de Aseguramiento de Calidad (QA)</h2>
+        <p>
+            Un sitio funcional no es solo un sitio sin errores; también debe ser <strong>accesible</strong> y <strong>amigable</strong> para todos los usuarios. Integrar estos elementos desde el inicio reduce los costos de corrección a largo plazo.
+        </p>
+        <div class="consejos-grid">
+            <div class="consejo-item">
+                <h4>✅ Testeo de Accesibilidad (A11y)</h4>
+                <p>Verifica que la aplicación sea utilizable por personas con discapacidades (ej. lectores de pantalla, contraste de color suficiente). Herramientas como <strong>Lighthouse</strong> de Chrome pueden ayudarte.</p>
+            </div>
+            <div class="consejo-item">
+                <h4>🔒 Pruebas de Seguridad Básicas</h4>
+                <p>Comprueba que no haya vulnerabilidades comunes como <strong>inyección SQL</strong> o <strong>Cross-Site Scripting (XSS)</strong>, especialmente en los campos de formularios y URLs.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="pruebas">
+        <h2>Guía de Pruebas Funcionales: Checklist Esencial 📋</h2>
+        <p>
+            La ejecución sistemática de pruebas funcionales es el corazón del <strong>Quality Assurance (QA)</strong>. Esta lista de verificación garantiza que cada componente interactivo de la aplicación cumpla con su propósito especificado antes de ser lanzado al público.
+        </p>
+        <ol>
+            <li>
+                Verificar enlaces y navegación general.
+                <span class="detalle-prueba">Asegurar que todos los <strong>hipervínculos internos y externos</strong> funcionen y que la estructura de la URL sea lógica. Usar mapas del sitio para no dejar páginas sin probar.</span>
+            </li>
+            <li>
+                Probar formularios y validaciones de datos.
+                <span class="detalle-prueba">Incluye la prueba de todos los <strong>campos obligatorios</strong>, la validación de formatos (email, teléfono) y la verificación del mensaje de éxito/error posterior al envío.</span>
+            </li>
+            <li>
+                Realizar pruebas de compatibilidad entre navegadores.
+                <span class="detalle-prueba">Concentrarse en los <strong>navegadores más utilizados</strong> por el público objetivo. Prestar atención a las animaciones y la disposición de los elementos (layout).</span>
+            </li>
+            <li>
+                Evaluar el rendimiento y la velocidad de carga.
+                <span class="detalle-prueba">Utilizar <strong>GTmetrix</strong> o <strong>PageSpeed Insights</strong> para analizar la optimización de imágenes, la minificación de recursos y el tiempo de respuesta del servidor (TTFB).</span>
+            </li>
+            <li>
+                Repetir las pruebas después de cada corrección aplicada.
+                <span class="detalle-prueba">Este paso se conoce como <strong>pruebas de regresión</strong>, vital para asegurar que las correcciones en una sección no introduzcan nuevos errores en otra ya funcional.</span>
+            </li>
+        </ol>
+    </section>
+
+    <section id="bibliografia">
+        <h2>Recursos y Bibliografía de Apoyo 📚</h2>
+        <p>
+            El conocimiento en pruebas de calidad evoluciona constantemente. Consulta estas fuentes para profundizar tu entendimiento de las mejores prácticas de la industria y las herramientas más utilizadas:
+        </p>
+        <ul>
+            <li>
+                <strong>Mozilla Developer Network (MDN)</strong>. (2025). <em>Guía de pruebas entre navegadores.</em> Enlace a la guía completa para asegurar la compatibilidad de código web en distintos navegadores. <br>
+                <a href="https://developer.mozilla.org/es/docs/Learn/Tools_and_testing/Cross_browser_testing" target="_blank">Enlace al recurso de MDN</a>
+            </li>
+            <li>
+                <strong>OWASP Foundation</strong>. (2024). <em>Web Security Testing Guide.</em> Documento técnico que detalla una metodología exhaustiva para el testeo de seguridad de aplicaciones web. <br>
+                <a href="https://owasp.org/www-project-web-security-testing-guide/" target="_blank">Enlace al proyecto OWASP WSTG</a>
+            </li>
+            <li>
+                <strong>Netlify</strong>. (2025). <em>Documentación oficial de Netlify.</em> Consulta la guía sobre cómo integrar pruebas y flujos de despliegue continuo (CI/CD) para proyectos web. <br>
+                <a href="https://docs.netlify.com/" target="_blank">Enlace a la documentación de Netlify</a>
+            </li>
+            <li>
+                <strong>GTmetrix</strong>. (2025). <em>Análisis de rendimiento de sitios web.</em> Herramienta y documentación para auditar y mejorar la velocidad de carga y la optimización de un sitio web. <br>
+                <a href="https://gtmetrix.com/" target="_blank">Enlace a la página principal de GTmetrix</a>
+            </li>
+        </ul>
+    </section>
+
+    <footer>
+        <p>Desarrollado por <strong>Jhon Jairo Mejia Avila</strong> | Aprendiz SENA Tecnólogo en Análisis y Desarrollo de Software (2885525) - 2025</p>
+    </footer>
+
+</body>
+</html>
