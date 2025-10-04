@@ -47,14 +47,14 @@ Se analiza la necesidad de un **diseño responsive** para garantizar la visualiz
 - **HTML5** → Estructura semántica del contenido.
 - **CSS3** → Estilos visuales, efectos, degradados y diseño responsivo.
 - **JavaScript** → Comportamientos mínimos, si aplica (ej. efectos ligeros).
-- **GitHub Pages** → Plataforma gratuita de despliegue y alojamiento.
+- **Netlify** → Plataforma gratuita de despliegue y alojamiento.
 
 ---
 
 ## 🚀 Despliegue
 
-Puedes visualizar el sitio web directamente en GitHub Pages a través del siguiente enlace:
-👉 [**Ver Landing Page aquí**](https://jjmejiaavila.github.io/landing-pruebas-funcionalidad/)
+Puedes visualizar el sitio web directamente en **Netifly**, a través del siguiente enlace:
+👉 [**Ver Landing Page aquí**](https://analisis-pruebas-calidad.netlify.app/)
 
 ---
 
